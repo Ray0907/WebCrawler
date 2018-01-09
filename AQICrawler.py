@@ -10,7 +10,7 @@ data={
     'act':'aqi-epa',
     
 }
-url='https://taqm.epa.gov.tw/taqm/aqs.ashx?lang='+urlencode(data)
+url='https://taqm.epa.gov.tw/taqm/aqs.ashx?'+urlencode(data)
 
 res=requests.get(url)
 
