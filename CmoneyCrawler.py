@@ -3,7 +3,15 @@
 import requests
 from urllib.parse import urlencode
 import json
-import requests.sessions
+
+
+data={
+	'action':'GetTechnicalData',
+	'stockId':1101,
+	'time':'d',
+	'range':100,
+	'cmkey':'9I5xoLB5AfaQvZBq70Y0+g==',
+}
 
 headers={
     'authority':'www.cmoney.tw',
@@ -18,8 +26,7 @@ headers={
     'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
     'x-requested-with':'XMLHttpRequest'
 }
-url='https://www.cmoney.tw/finance/ashx/MainPage.ashx?action=GetTechnicalData&stockId=1101&time=d&range=100&cmkey=9QPs9jkiRYY%2BNJN1THYr4Q%3D%3D'
-
+url='https://www.cmoney.tw/finance/ashx/MainPage.ashx?'+urlencode(data)
 res=requests.get(url,headers=headers)
 html=res.text
 temp=json.loads(html)
