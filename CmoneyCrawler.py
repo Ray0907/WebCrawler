@@ -3,6 +3,7 @@
 import requests
 from urllib.parse import urlencode
 import json
+import pandas as pd
 
 
 data={
@@ -10,7 +11,7 @@ data={
 	'stockId':1101,
 	'time':'d',
 	'range':100,
-	'cmkey':'9I5xoLB5AfaQvZBq70Y0+g==',
+	'cmkey':'IO6lXiCIlYj0t7kPE64/WA==',
 }
 
 headers={
@@ -30,6 +31,6 @@ url='https://www.cmoney.tw/finance/ashx/MainPage.ashx?'+urlencode(data)
 res=requests.get(url,headers=headers)
 html=res.text
 temp=json.loads(html)
-for item in range(len(temp)):
-    print(temp[item])
+result=pd.DataFrame(temp)
+print(result)
     
